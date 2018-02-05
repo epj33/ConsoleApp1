@@ -8,15 +8,17 @@ namespace ConsoleApp1 {
         static void RunUpdate(String cloudVersionString) 
         {
             string updateCloudString = "RunUpdate is updating to version " + cloudVersionString + "...";
-            string versionFilePath = @"c:\users\michaelstahle\documents\visual studio 2017\Projects\ConsoleApp1\ConsoleApp1\localVersion.txt";
+            //string versionFilePath = @"c:\users\michaelstahle\documents\visual studio 2017\Projects\ConsoleApp1\ConsoleApp1\localVersion.txt";
+            string versionFilePath = @"localVersion.txt";
             File.WriteAllText( versionFilePath, cloudVersionString );
             Console.WriteLine( updateCloudString );
         }//end RunUpdate();
 
 
         static Version GetCloudVersion() {
-            string versionFilePath = @"c:\users\michaelstahle\documents\visual studio 2017\Projects\ConsoleApp1\ConsoleApp1\cloudVersion.txt";
+            //string versionFilePath = @"c:\users\michaelstahle\documents\visual studio 2017\Projects\ConsoleApp1\ConsoleApp1\cloudVersion.txt";
             //string versionFilePathe = @"E:\eric\progFiles\jenkins\workspace\versionCheckFromGithub\luvCloudVersion.txt";
+            string versionFilePath = @"cloudVersion.txt";
             var versionFromFile = new Version( "0.0.0" );
             if( File.Exists( versionFilePath ) )
             {
@@ -31,7 +33,8 @@ namespace ConsoleApp1 {
 
         static Version GetLocalVersion() 
         {
-            string versionFilePath = @"c:\users\michaelstahle\documents\visual studio 2017\Projects\ConsoleApp1\ConsoleApp1\localVersion.txt";
+            //string versionFilePath = @"c:\users\michaelstahle\documents\visual studio 2017\Projects\ConsoleApp1\ConsoleApp1\localVersion.txt";
+            string versionFilePath = @"localVersion.txt";
             var versionFromFile = new Version( "0.0.0" );
             if( File.Exists( versionFilePath ) ) 
             {
