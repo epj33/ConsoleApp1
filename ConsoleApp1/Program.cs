@@ -58,7 +58,7 @@ namespace ConsoleApp1 {
                 RunUpdate( cloudVersion.ToString() );
             }
             string versionString = "localVersion is: " + localVersion.ToString() + "\ncloudVersion is: " + cloudVersion.ToString() +
-                "\napp version is build 62.41";
+                "\napp version is build 63.41";
             Console.WriteLine( versionString );
             Console.ReadLine();
         }//end Main()
