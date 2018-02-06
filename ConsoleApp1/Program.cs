@@ -14,7 +14,7 @@ namespace ConsoleApp1 {
 
 
         static Version GetCloudVersion() {
-            string versionFilePath = "cloudVersion.txt";
+            string versionFilePath = @"../../cloudVersion.txt";
             var versionFromFile = new Version( "0.0.0" );
             if( File.Exists( versionFilePath ) )
             {
@@ -27,7 +27,7 @@ namespace ConsoleApp1 {
 
 
         static Version GetLocalVersion() {
-            string versionFilePath = @"localVersion.txt";
+            string versionFilePath = @"../../localVersion.txt";
             var versionFromFile = new Version( "0.0.0" );
             if( File.Exists( versionFilePath ) ) 
             {
