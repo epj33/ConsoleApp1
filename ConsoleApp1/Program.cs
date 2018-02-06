@@ -5,10 +5,8 @@ using System.IO;
 namespace ConsoleApp1 {
     class Program {
 
-        static void RunUpdate(String cloudVersionString) 
-        {
+        static void RunUpdate(String cloudVersionString) { 
             string updateCloudString = "RunUpdate is updating to version " + cloudVersionString + "...";
-            //string versionFilePath = @"c:\users\michaelstahle\documents\visual studio 2017\Projects\ConsoleApp1\ConsoleApp1\localVersion.txt";
             string versionFilePath = @"../../localVersion.txt";
             File.WriteAllText( versionFilePath, cloudVersionString );
             Console.WriteLine( updateCloudString );
@@ -16,13 +14,10 @@ namespace ConsoleApp1 {
 
 
         static Version GetCloudVersion() {
-            //string versionFilePath = @"c:\users\michaelstahle\documents\visual studio 2017\Projects\ConsoleApp1\ConsoleApp1\cloudVersion.txt";
-            //string versionFilePathe = @"E:\eric\progFiles\jenkins\workspace\versionCheckFromGithub\luvCloudVersion.txt";
             string versionFilePath = "../../cloudVersion.txt";
             var versionFromFile = new Version( "0.0.0" );
             if( File.Exists( versionFilePath ) )
             {
-                //versionFromFile = new Version( File.ReadAllText( versionFilePath ) );//works. need better in case of more lines?
                 StreamReader versionFile = new StreamReader( versionFilePath );
                 versionFromFile = new Version( versionFile.ReadLine() );
                 versionFile.Close();
@@ -31,9 +26,7 @@ namespace ConsoleApp1 {
         }//end GetCloudVersion()
 
 
-        static Version GetLocalVersion() 
-        {
-            //string versionFilePath = @"c:\users\michaelstahle\documents\visual studio 2017\Projects\ConsoleApp1\ConsoleApp1\localVersion.txt";
+        static Version GetLocalVersion() {
             string versionFilePath = @"../../localVersion.txt";
             var versionFromFile = new Version( "0.0.0" );
             if( File.Exists( versionFilePath ) ) 
@@ -65,7 +58,7 @@ namespace ConsoleApp1 {
                 RunUpdate( cloudVersion.ToString() );
             }
             Console.WriteLine( "version is up to date!\nHit Enter to close." );
-            //Console.ReadLine();
+            Console.ReadLine();
         }//end Main()
     }//end Program
 }//end ConsoleApp1
