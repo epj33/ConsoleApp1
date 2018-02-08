@@ -1,42 +1,47 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Resources;
 
 
 namespace ConsoleApp1 {
     class Program {
 
-        static void RunUpdate(String cloudVersionString) { 
-            string updateCloudString = "RunUpdate is updating to version " + cloudVersionString + "...";
-            string versionFilePath = @"../../localVersion.txt";
-            File.WriteAllText( versionFilePath, cloudVersionString );
-            Console.WriteLine( updateCloudString );
+        static void RunUpdate(String cloudVersionString) {
+            string path = Environment.GetFolderPath( Environment.SpecialFolder.MyDocuments ) + "/localVersion.txt"; 
+            string localVersionString = "localVersion " + cloudVersionString;
+            File.WriteAllText( path, localVersionString );
         }//end RunUpdate();
 
 
         static Version GetCloudVersion() {
-            string versionFilePath = @"../../cloudVersion.txt";
+            string versionFromFileLocal = Properties.Resources.cloudVersion;
+            List<string> wordsFromCloudFile = versionFromFileLocal.Split( new[] { " " }, StringSplitOptions.RemoveEmptyEntries ).ToList();
+            string theLocalVersionStr = wordsFromCloudFile[1];
             var versionFromFile = new Version( "0.0.0" );
-            if( File.Exists( versionFilePath ) )
+            if( !string.IsNullOrEmpty( theLocalVersionStr ) ) 
             {
-                StreamReader versionFile = new StreamReader( versionFilePath );
-                versionFromFile = new Version( versionFile.ReadLine() );
-                versionFile.Close();
+                versionFromFile = new Version( theLocalVersionStr ); 
             }
             return versionFromFile;
         }//end GetCloudVersion()
 
 
         static Version GetLocalVersion() {
-            string versionFilePath = @"../../localVersion.txt";
+            string path = Environment.GetFolderPath( Environment.SpecialFolder.MyDocuments ) + "/localVersion.txt";
+            StreamReader localVersionReader = new StreamReader( path );
+            string thelocalVer = localVersionReader.ReadLine();
+            localVersionReader.Close();
+            List<string> wordsFromLocalFile = thelocalVer.Split( new[] { " " }, StringSplitOptions.RemoveEmptyEntries ).ToList();
+            string theLocalVersionStr = wordsFromLocalFile[1];
             var versionFromFile = new Version( "0.0.0" );
-            if( File.Exists( versionFilePath ) ) 
+            if( !string.IsNullOrEmpty( theLocalVersionStr ) ) 
             {
-                StreamReader versionFile = new StreamReader( versionFilePath );
-                versionFromFile = new Version( versionFile.ReadLine() );
-                versionFile.Close();
+                versionFromFile = new Version( theLocalVersionStr ); 
             }
             else {
-                File.WriteAllText( versionFilePath, versionFromFile.ToString() );
+                File.WriteAllText( Properties.Resources.localFile, versionFromFile.ToString() );
             }
             return versionFromFile;
         }//end GetLocalVersion()
@@ -58,7 +63,7 @@ namespace ConsoleApp1 {
                 RunUpdate( cloudVersion.ToString() );
             }
             string versionString = "localVersion is: " + localVersion.ToString() + "\ncloudVersion is: " + cloudVersion.ToString() +
-                "\napp version is build 38";
+                "\napp version is build 65.43";
             Console.WriteLine( versionString );
             Console.ReadLine();
         }//end Main()
