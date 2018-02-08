@@ -5,3 +5,5 @@ c:\users\michaelstahle\documents\visual studio 2017\Projects\ConsoleApp1\Console
 c:\users\michaelstahle\documents\visual studio 2017\Projects\ConsoleApp1\ConsoleApp1\obj\Debug\VersioningConsoleApp.csproj.CoreCompileInputs.cache
 c:\users\michaelstahle\documents\visual studio 2017\Projects\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.exe
 c:\users\michaelstahle\documents\visual studio 2017\Projects\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.pdb
+C:\Users\MichaelStahle\documents\visual studio 2017\Projects\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.Properties.Resources.resources
+C:\Users\MichaelStahle\documents\visual studio 2017\Projects\ConsoleApp1\ConsoleApp1\obj\Debug\VersioningConsoleApp.csproj.GenerateResource.Cache
