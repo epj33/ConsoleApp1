@@ -9,7 +9,7 @@ namespace ConsoleApp1 {
     class Program {
 
         static void RunUpdate(String cloudVersionString) {
-            string path = Environment.GetFolderPath( Environment.SpecialFolder.MyDocuments ) + "/localVersion.txt"; 
+            string path = Environment.GetFolderPath( Environment.SpecialFolder.CommonDocuments) + "/localVersion.txt"; 
             string localVersionString = "localVersion " + cloudVersionString;
             File.WriteAllText( path, localVersionString );
         }//end RunUpdate();
@@ -29,7 +29,7 @@ namespace ConsoleApp1 {
 
 
         static Version GetLocalVersion() {
-            string path = Environment.GetFolderPath( Environment.SpecialFolder.MyDocuments ) + "/localVersion.txt";
+            string path = Environment.GetFolderPath( Environment.SpecialFolder.CommonDocuments) + "/localVersion.txt";
             StreamReader localVersionReader = new StreamReader( path );
             string thelocalVer = localVersionReader.ReadLine();
             localVersionReader.Close();
