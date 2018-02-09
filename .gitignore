@@ -10,3 +10,5 @@ ConsoleApp1/obj/Debug/VersioningConsoleApp.csproj.FileListAbsolute.txt
 .vs/ConsoleApp1/v15/Server/sqlite3/storage.ide
 .vs/ConsoleApp1/v15/Server/sqlite3/storage.ide-shm
 .vs/ConsoleApp1/v15/.suo
+*.exe
+*.pdb
