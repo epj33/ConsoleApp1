@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Resources;
 
 
 namespace ConsoleApp1 {
@@ -29,8 +28,8 @@ namespace ConsoleApp1 {
 
 
         static Version GetLocalVersion() {
-            string path = Environment.GetFolderPath( Environment.SpecialFolder.CommonDocuments) + "/localVersion.txt";
-            StreamReader localVersionReader = new StreamReader( path );
+            string localPublicDocsPathForLocalVersion = Environment.GetFolderPath( Environment.SpecialFolder.CommonDocuments) + "/localVersion.txt";
+            StreamReader localVersionReader = new StreamReader( localPublicDocsPathForLocalVersion );
             string thelocalVer = localVersionReader.ReadLine();
             localVersionReader.Close();
             List<string> wordsFromLocalFile = thelocalVer.Split( new[] { " " }, StringSplitOptions.RemoveEmptyEntries ).ToList();
@@ -41,7 +40,7 @@ namespace ConsoleApp1 {
                 versionFromFile = new Version( theLocalVersionStr ); 
             }
             else {
-                File.WriteAllText( Properties.Resources.localFile, versionFromFile.ToString() );
+                File.WriteAllText(localPublicDocsPathForLocalVersion, versionFromFile.ToString() );
             }
             return versionFromFile;
         }//end GetLocalVersion()
