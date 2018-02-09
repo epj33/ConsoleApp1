@@ -19,7 +19,7 @@ namespace ConsoleApp1 {
             string versionFromFileLocal = Properties.Resources.cloudVersion;
             List<string> wordsFromCloudFile = versionFromFileLocal.Split( new[] { " " }, StringSplitOptions.RemoveEmptyEntries ).ToList();
             string theLocalVersionStr = wordsFromCloudFile[1];
-            var versionFromFile = new Version( "0.0.0" );
+            var versionFromFile = new Version( "0.0.1" );
             if( !string.IsNullOrEmpty( theLocalVersionStr ) ) 
             {
                 versionFromFile = new Version( theLocalVersionStr ); 
@@ -35,7 +35,7 @@ namespace ConsoleApp1 {
             localVersionReader.Close();
             List<string> wordsFromLocalFile = thelocalVer.Split( new[] { " " }, StringSplitOptions.RemoveEmptyEntries ).ToList();
             string theLocalVersionStr = wordsFromLocalFile[1];
-            var versionFromFile = new Version( "0.0.0" );
+            var versionFromFile = new Version( "0.0.1" );
             if( !string.IsNullOrEmpty( theLocalVersionStr ) ) 
             {
                 versionFromFile = new Version( theLocalVersionStr ); 
