@@ -28,16 +28,20 @@ namespace ConsoleApp1 {
 
 
         static Version GetLocalVersion() {
+            Version versionFromFile = new Version("0.0.1");
             string localPublicDocsPathForLocalVersion = Environment.GetFolderPath( Environment.SpecialFolder.CommonDocuments) + "/localVersion.txt";
-            StreamReader localVersionReader = new StreamReader( localPublicDocsPathForLocalVersion );
-            string thelocalVer = localVersionReader.ReadLine();
-            localVersionReader.Close();
-            List<string> wordsFromLocalFile = thelocalVer.Split( new[] { " " }, StringSplitOptions.RemoveEmptyEntries ).ToList();
-            string theLocalVersionStr = wordsFromLocalFile[1];
-            var versionFromFile = new Version( "0.0.1" );
-            if( !string.IsNullOrEmpty( theLocalVersionStr ) ) 
+            if( File.Exists(localPublicDocsPathForLocalVersion))
             {
-                versionFromFile = new Version( theLocalVersionStr ); 
+                StreamReader localVersionReader = new StreamReader(localPublicDocsPathForLocalVersion);
+                string thelocalVer = localVersionReader.ReadLine();
+                localVersionReader.Close();
+
+                List<string> wordsFromLocalFile = thelocalVer.Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries).ToList();
+                string theLocalVersionStr = wordsFromLocalFile[1];
+                if (!string.IsNullOrEmpty(theLocalVersionStr))
+                {
+                    versionFromFile = new Version(theLocalVersionStr);
+                }
             }
             else {
                 File.WriteAllText(localPublicDocsPathForLocalVersion, versionFromFile.ToString() );
